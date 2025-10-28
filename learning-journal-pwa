@@ -1,0 +1,15 @@
+learning-journal-pwa/
+│
+├── index.html          ← Homepage
+├── journal.html        ← Weekly entries
+├── about.html          ← Your profile
+├── projects.html       ← Your work
+│
+├── css/
+│   └── style.css       ← All your styling
+│
+├── js/
+│   └── (empty for now) ← Will be used in later labs
+│
+└── images/
+    └── (store your pictures/icons)
