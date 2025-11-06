@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weekly Journal</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+
+  <!-- Navigation injected by JS -->
   <header>
-    <nav class="navbar">
-      <a href="index.html" class="logo">My Journal</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="journal.html" class="active">Journal</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
+    <div id="nav-container"></div>
   </header>
 
   <main>
     <section class="journal">
       <h1>Weekly Journal</h1>
 
+      <!-- Week 3 interactive form -->
+      <h2>Add New Journal Entry</h2>
+      <form id="journal-form">
+        <textarea id="journal-input" placeholder="Write your journal entry..." rows="6"></textarea>
+        <br>
+        <button type="submit">Submit Entry</button>
+      </form>
+
+      <div id="journal-output"></div>
+
+      <hr>
+
+      <!-- Week 2 Reflection -->
       <article>
         <h2>Week 2 – Frontend Fundamentals</h2>
-
         <p><strong>1. How did you approach mobile-first design?</strong><br>
           I started designing for mobile first by using a single-column layout, simple navigation, and responsive text sizes.
-           Then I added media queries to adjust layout for tablets and desktops.</p>
+          Then I added media queries to adjust layout for tablets and desktops.</p>
 
-        <p><strong>2. What was the most useful HTML or CSS concept you applied this week?</strong><br>
-          The most useful concept was using Flexbox/Grid for layout and writing responsive CSS. 
-          Linking pages together with navigation also helped me understand page structure.</p>
+        <p><strong>2. Most useful HTML/CSS concept:</strong><br>
+          Flexbox/Grid for layout and linking pages via navigation.</p>
 
-        <p><strong>3. What part of HTML or CSS did you find most challenging?</strong><br>
-          The most challenging part was understanding responsive media queries and organising files properly for a real project structure. 
-          Working with GitHub was also new but I learned it step-by-step.</p>
+        <p><strong>3. Most challenging part:</strong><br>
+          Understanding responsive media queries and organizing files. GitHub workflow was new but learned step-by-step.</p>
       </article>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Bhupendra Thapa 
-    
-    </p>
+    <p>© 2025 Bhupendra Thapa</p>
   </footer>
-</body>
 
+  <script src="js/script.js"></script>
+</body>
 </html>

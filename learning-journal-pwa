@@ -1,15 +1,15 @@
 learning-journal-pwa/
 │
 ├── index.html          ← Homepage
-├── journal.html        ← Weekly entries
-├── about.html          ← Your profile
-├── projects.html       ← Your work
+├── journal.html        ← Weekly journal & form
+├── projects.html       ← Projects with collapsible details
+├── about.html          ← About me
 │
 ├── css/
-│   └── style.css       ← All your styling
+│   └── style.css       ← All styling
 │
 ├── js/
-│   └── (empty for now) ← Will be used in later labs
+│   └── script.js       ← Navigation, dark mode, project collapsibles, date/time, form validation
 │
 └── images/
-    └── (store your pictures/icons)
+    └── (put any pictures/icons here)

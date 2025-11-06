@@ -7,16 +7,10 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <!-- Navigation injected by JS -->
   <header>
-    <nav class="navbar">
-      <a href="index.html" class="logo">My Journal</a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="journal.html">Journal</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
+    <div id="nav-container"></div>
   </header>
 
   <main>
@@ -27,19 +21,27 @@
       <div class="project-list">
         <div class="project-card">
           <h2>Project 1: Responsive Website</h2>
-          <p>A simple responsive website using HTML and CSS.</p>
+          <button class="toggle-btn">View Details</button>
+          <p class="project-details">
+            This project demonstrates building a fully responsive website using HTML & CSS, following a mobile-first design approach.
+          </p>
         </div>
+
         <div class="project-card">
           <h2>Project 2: JavaScript App (Coming Soon)</h2>
-          <p>Will be updated later during the course.</p>
+          <button class="toggle-btn">View Details</button>
+          <p class="project-details">
+            Dynamic JavaScript application with DOM manipulation and interactivity, to be developed later in the course.
+          </p>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Bhupendra Thapa </p>
+    <p>© 2025 Bhupendra Thapa</p>
   </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
-    
