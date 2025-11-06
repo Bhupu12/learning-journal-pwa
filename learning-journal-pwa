@@ -1,12 +1,17 @@
-learning-journal/
+learning-journal-pwa/
 │
 ├── index.html
+├── journal.html
 ├── about.html
 ├── projects.html
-├── journal.html
+│
+├── css/
+│   └── style.css
 │
 ├── js/
-│   └── script.js
+│   ├── script.js          ← your main DOM + theme code
+│   ├── storage.js         ← handles saving journal + theme
+│   ├── browser.js         ← clipboard feature
+│   └── thirdparty.js      ← fetch external API data
 │
-└── css/
-    └── style.css
+└── images/

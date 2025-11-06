@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weekly Journal</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
   <header id="nav-container"></header>
 
@@ -15,6 +13,23 @@
     <section class="journal">
       <h1>Weekly Journal</h1>
 
+      
+      <form id="journal-form">
+        <textarea id="journal-input" placeholder="Write your journal entry..." rows="6"></textarea><br>
+        <button type="submit">💾 Save Entry</button>
+        <button type="button" id="copy-entry">📋 Copy Entry</button>
+        <button type="button" id="clear-entries">🗑️ Clear All Entries</button>
+      </form>
+
+      <h2>🗂️ Saved Entries</h2>
+      <ul id="saved-entries"></ul>
+
+      <h2>💬 Inspirational Quote</h2>
+      <p id="quote-text">Loading quote...</p>
+
+      <hr>
+
+      
       <article>
         <h2>Week 2 – Frontend Fundamentals</h2>
 
@@ -23,7 +38,7 @@
           Then I added media queries to adjust layout for tablets and desktops.</p>
 
         <p><strong>2. What was the most useful HTML or CSS concept you applied this week?</strong><br>
-          The most useful concept was using Flexbox/Grid for layout and writing responsive CSS. 
+          The most useful concept was using Flexbox/Grid for layout and writing responsive CSS.
           Linking pages together with navigation also helped me understand page structure.</p>
 
         <p><strong>3. What part of HTML or CSS did you find most challenging?</strong><br>
@@ -37,7 +52,10 @@
     <p>© 2025 Bhupendra Thapa</p>
   </footer>
 
+ 
   <script src="js/script.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/browser.js"></script>
+  <script src="js/thirdparty.js"></script>
 </body>
-
 </html>
