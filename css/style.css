@@ -4,6 +4,9 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* Navbar */
@@ -13,6 +16,7 @@ body {
   align-items: center;
   background-color: #333;
   padding: 10px;
+  transition: background-color 0.25s ease;
 }
 
 .logo {
@@ -46,14 +50,25 @@ body {
   background-color: #555;
 }
 
-/* Content Sections */
+/* Buttons */
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+  margin-top: 8px;
+  transition: background-color 0.25s ease;
+}
+button:hover {
+  background-color: #555;
+}
+
+/* Content */
 main {
   padding: 20px;
   text-align: center;
-}
-
-h1 {
-  color: #333;
 }
 
 .project-list {
@@ -67,6 +82,7 @@ h1 {
   border: 1px solid #ddd;
   padding: 15px;
   border-radius: 10px;
+  text-align: left;
 }
 
 /* Footer */
@@ -77,7 +93,27 @@ footer {
   font-size: 0.9em;
 }
 
-/* Responsive for larger screens */
+/* Dark mode */
+.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+.dark-mode .navbar {
+  background-color: #000;
+}
+.dark-mode .nav-links a:hover,
+.dark-mode .nav-links a.active {
+  background-color: #222;
+}
+.dark-mode button {
+  background-color: #222;
+  color: #eee;
+}
+.dark-mode button:hover {
+  background-color: #444;
+}
+
+/* Responsive */
 @media (min-width: 768px) {
   .navbar {
     flex-direction: row;
