@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-  <header id="nav-container"></header>
+
+  <!-- Navigation injected by JS -->
+  <header>
+    <div id="nav-container"></div>
+  </header>
 
   <main>
     <section class="projects">
@@ -19,11 +21,18 @@
       <div class="project-list">
         <div class="project-card">
           <h2>Project 1: Responsive Website</h2>
-          <p>A simple responsive website using HTML and CSS.</p>
+          <button class="toggle-btn">View Details</button>
+          <p class="project-details">
+            This project demonstrates building a fully responsive website using HTML & CSS, following a mobile-first design approach.
+          </p>
         </div>
+
         <div class="project-card">
           <h2>Project 2: JavaScript App (Coming Soon)</h2>
-          <p>Will be updated later during the course.</p>
+          <button class="toggle-btn">View Details</button>
+          <p class="project-details">
+            Dynamic JavaScript application with DOM manipulation and interactivity, to be developed later in the course.
+          </p>
         </div>
       </div>
     </section>
@@ -35,5 +44,4 @@
 
   <script src="js/script.js"></script>
 </body>
-
 </html>

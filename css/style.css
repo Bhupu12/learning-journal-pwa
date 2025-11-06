@@ -1,4 +1,6 @@
-/* Base mobile-first design */
+/* ================================
+   Base Mobile-First Design
+================================ */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -9,18 +11,19 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Navbar */
+/* ================================
+   Navbar
+================================ */
 .navbar {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Mobile first */
   align-items: center;
   background-color: #333;
   padding: 10px;
-  transition: background-color 0.25s ease;
 }
 
 .logo {
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 1.5em;
   text-decoration: none;
   margin-bottom: 10px;
@@ -29,6 +32,7 @@ body {
 .nav-links {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,25 +54,34 @@ body {
   background-color: #555;
 }
 
-/* Buttons */
+/* ================================
+   Buttons (theme toggle & collapsibles)
+================================ */
 button {
   padding: 8px 12px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   background-color: #333;
-  color: white;
-  margin-top: 8px;
-  transition: background-color 0.25s ease;
+  color: #fff;
+  margin-top: 5px;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
+
 button:hover {
   background-color: #555;
 }
 
-/* Content */
+/* ================================
+   Main Content Sections
+================================ */
 main {
   padding: 20px;
   text-align: center;
+}
+
+h1, h2 {
+  color: #333;
 }
 
 .project-list {
@@ -85,7 +98,31 @@ main {
   text-align: left;
 }
 
-/* Footer */
+.project-details {
+  margin-top: 8px;
+  display: none; /* Hidden initially, shown by JS */
+}
+
+/* ================================
+   Journal Form
+================================ */
+#journal-input {
+  width: 90%;
+  max-width: 600px;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+#journal-form button {
+  margin-top: 10px;
+}
+
+/* ================================
+   Footer
+================================ */
 footer {
   text-align: center;
   background-color: #f0f0f0;
@@ -93,27 +130,39 @@ footer {
   font-size: 0.9em;
 }
 
-/* Dark mode */
+/* ================================
+   Dark Mode
+================================ */
 .dark-mode {
   background-color: #121212;
   color: #eee;
 }
+
 .dark-mode .navbar {
   background-color: #000;
 }
+
+.dark-mode .nav-links a {
+  color: #eee;
+}
+
 .dark-mode .nav-links a:hover,
 .dark-mode .nav-links a.active {
   background-color: #222;
 }
+
 .dark-mode button {
   background-color: #222;
   color: #eee;
 }
+
 .dark-mode button:hover {
   background-color: #444;
 }
 
-/* Responsive */
+/* ================================
+   Responsive (Tablets / Desktop)
+================================ */
 @media (min-width: 768px) {
   .navbar {
     flex-direction: row;
@@ -131,6 +180,7 @@ footer {
   .project-list {
     flex-direction: row;
     justify-content: center;
+    gap: 20px;
   }
 
   .project-card {
