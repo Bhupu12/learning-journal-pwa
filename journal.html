@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <!-- Navigation injected by JS -->
+  <!-- Navigation injected by script.js -->
   <header>
     <div id="nav-container"></div>
   </header>
@@ -17,31 +17,39 @@
     <section class="journal">
       <h1>Weekly Journal</h1>
 
-      <!-- Week 3 interactive form -->
-      <h2>Add New Journal Entry</h2>
+      <!-- Journal Form -->
       <form id="journal-form">
-        <textarea id="journal-input" placeholder="Write your journal entry..." rows="6"></textarea>
-        <br>
-        <button type="submit">Submit Entry</button>
+        <textarea id="journal-input" placeholder="Write your journal entry..." rows="6"></textarea><br>
+
+        <button type="submit">💾 Save Entry</button>
+        <button type="button" id="copy-entry">📋 Copy Entry</button>
+        <button type="button" id="clear-entries">🗑️ Clear All Entries</button>
       </form>
 
-      <div id="journal-output"></div>
+      <h2>🗂️ Saved Entries</h2>
+      <ul id="saved-entries">Loading...</ul>
+
+      <h2>💬 Inspirational Quote</h2>
+      <p id="quote-text">Loading quote...</p>
 
       <hr>
 
-      <!-- Week 2 Reflection -->
-      <article>
-        <h2>Week 2 – Frontend Fundamentals</h2>
-        <p><strong>1. How did you approach mobile-first design?</strong><br>
-          I started designing for mobile first by using a single-column layout, simple navigation, and responsive text sizes.
-          Then I added media queries to adjust layout for tablets and desktops.</p>
+ <!-- Week 5 Reflection -->
+<article>
+  <h2>Week 5 – Python & JSON Backend Integration</h2>
 
-        <p><strong>2. Most useful HTML/CSS concept:</strong><br>
-          Flexbox/Grid for layout and linking pages via navigation.</p>
+  <p><strong>1. How is storing data in a JSON file different from using browser storage?</strong><br>
+  Storing data in a JSON file involves saving information on the server or local file system, making it persistent beyond the browser's scope. This approach enables sharing and backup of data, useful for collaborative or offline scenarios. In contrast, browser storage mechanisms like <code>localStorage</code> are limited to the client’s browser environment and are domain-specific, meaning the data cannot be accessed across different devices or browsers. JSON-based storage decouples data from the front end and supports long-term accessibility.</p>
 
-        <p><strong>3. Most challenging part:</strong><br>
-          Understanding responsive media queries and organizing files. GitHub workflow was new but learned step-by-step.</p>
-      </article>
+  <p><strong>2. How did you use Python to create or update your JSON file?</strong><br>
+  I developed a Python script named <code>save_entry.py</code> which prompts the user for reflection input. The script reads from an existing <code>reflections.json</code> file, parses its content into a Python list, appends the new reflection along with metadata like the date and time using the <code>datetime</code> module, and then serializes the updated list back to the JSON file. This method leverages Python's <code>json</code> module for seamless conversion between Python objects and JSON format, promoting human-readable and structured data handling.</p>
+
+  <p><strong>3. What does your PWA show locally, and what will users see on GitHub? Are they the same?</strong><br>
+  Locally, my Progressive Web App (PWA) uses JavaScript's <code>fetch</code> API to retrieve data from the <code>reflections.json</code> file and dynamically renders it into the DOM. This real-time interaction reflects any new entries added via Python. However, GitHub only displays the last pushed version of the JSON file since it's a static repository. To keep the GitHub version updated, manual commits are required. Therefore, what users see online may not always match what I see locally unless changes are regularly committed and pushed to the repository.</p>
+
+  <p><strong>4. What extra feature did you add to your PWA using the JSON file, and why?</strong><br>
+  To enhance the functionality of my Learning Journal, I implemented two additional features: a reflection counter and an export button. The counter dynamically displays the total number of reflections fetched from the JSON file, offering immediate insight into the user’s progress. The export feature enables users to download the JSON file containing their reflections, promoting portability and data backup. Both features utilize DOM manipulation and event handling in JavaScript to interact with the JSON data structure effectively.</p>
+</article>
     </section>
   </main>
 
@@ -49,6 +57,11 @@
     <p>© 2025 Bhupendra Thapa</p>
   </footer>
 
+  <!-- JS Files -->
   <script src="js/script.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/browser.js"></script>
+  <script src="js/thirdparty.js"></script>
+
 </body>
 </html>

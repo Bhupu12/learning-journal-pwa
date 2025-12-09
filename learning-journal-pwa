@@ -1,15 +1,20 @@
 learning-journal-pwa/
 │
-├── index.html          ← Homepage
-├── journal.html        ← Weekly journal & form
-├── projects.html       ← Projects with collapsible details
-├── about.html          ← About me
+├── index.html
+├── journal.html
+├── projects.html
+├── about.html
 │
 ├── css/
-│   └── style.css       ← All styling
+│   └── style.css
 │
 ├── js/
-│   └── script.js       ← Navigation, dark mode, project collapsibles, date/time, form validation
+│   ├── script.js
+│   ├── fetchReflections.js   ← NEW for Lab 5
+│
+├── backend/   ← NEW folder for Lab 5
+│   ├── reflections.json
+│   └── save_entry.py
 │
 └── images/
-    └── (put any pictures/icons here)
+    └── (any pictures/icons)
