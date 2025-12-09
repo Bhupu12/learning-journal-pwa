@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1️⃣ Inject navigation bar
+  
   const nav = `
     <nav class="navbar">
       <a href="index.html" class="logo">My Journal</a>
@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navContainer = document.getElementById("nav-container");
   if (navContainer) navContainer.innerHTML = nav;
 
-  // 2️⃣ Dark / Light Theme Toggle
   const toggleBtn = document.getElementById("theme-toggle");
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 3️⃣ Live Date & Time
   const dateEl = document.getElementById("date-display");
   const timeEl = document.getElementById("time-display");
 
@@ -36,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateDateTime();
   setInterval(updateDateTime, 1000);
 
-  // 4️⃣ Collapsible project details (optional)
   document.querySelectorAll(".toggle-btn").forEach(button => {
     button.addEventListener("click", () => {
       const details = button.nextElementSibling;
@@ -46,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 5️⃣ Journal form validation (optional future form)
   const journalForm = document.getElementById("journal-form");
   if (journalForm) {
     journalForm.addEventListener("submit", (e) => {
