@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Give space so fixed offline banner doesn't cover content */
+body {
+    padding-top: 60px;
+}
+
+h2 {
+    color: #2b6cb0;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin-top: 30px;
+}
+
+form, #viewAll {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    max-width: 600px;
+}
+
+/* Reflection card style (used by form4JS.js) */
+.reflection-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+
+.reflection-box p {
+    margin: 10px 0 0;
+    line-height: 1.4;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #cbd5e0;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+input[type="submit"], input[type="reset"], button {
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button {
+    margin-right: 10px;
+}
+
+button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+    background: #2c5282;
+}
+
+.offline-banner {
+    background: #e53e3e;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
