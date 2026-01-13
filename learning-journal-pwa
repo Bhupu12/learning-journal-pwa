@@ -1,0 +1,20 @@
+learning-journal-pwa/
+│
+├── index.html
+├── journal.html
+├── projects.html
+├── about.html
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   ├── script.js
+│   ├── fetchReflections.js   ← NEW for Lab 5
+│
+├── backend/   ← NEW folder for Lab 5
+│   ├── reflections.json
+│   └── save_entry.py
+│
+└── images/
+    └── (any pictures/icons)
