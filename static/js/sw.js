@@ -1,10 +1,12 @@
-const CACHE_NAME = "journal-cache-v1";
+const CACHE_NAME = "journal-cache-v2"; // ✅ bump version so changes apply
 
 const APP_SHELL = [
   "/",                           // main page
-  "/static/style.css",           // your CSS
-  "/static/js/form4JS.js",       // your JS
-  "/static/manifest.json",       // manifest
+  "/todo",                       // ✅ NEW page
+  "/static/style.css",
+  "/static/js/form4JS.js",
+  "/static/js/todo.js",          // ✅ NEW script
+  "/static/manifest.json",
   "/static/images/icon-192.png",
   "/static/images/icon-512.png"
 ];
@@ -14,14 +16,12 @@ self.addEventListener("install", (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
 
-    // Cache files one-by-one so one missing file doesn't break install
     await Promise.all(
       APP_SHELL.map(async (url) => {
         try {
           await cache.add(url);
         } catch (e) {
           // ignore missing files so SW still installs
-          // (useful if icons aren't uploaded yet)
         }
       })
     );
@@ -44,8 +44,11 @@ self.addEventListener("fetch", (event) => {
   const req = event.request;
   const url = new URL(req.url);
 
-  // Cache API responses (GET reflections) with network-first
-  if (url.pathname.startsWith("/api/reflections") && req.method === "GET") {
+  // ✅ Cache API responses (GET reflections + tasks) with network-first
+  if (
+    (url.pathname.startsWith("/api/reflections") || url.pathname.startsWith("/api/tasks")) &&
+    req.method === "GET"
+  ) {
     event.respondWith(networkFirst(req));
     return;
   }
