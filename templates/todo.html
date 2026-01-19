@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Study Planner - To Do</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <meta name="theme-color" content="#2b6cb0">
+
+  <!-- CSS + JS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='js/todo.js') }}"></script>
+</head>
+
+<body onload="initTodo()">
+
+  <div id="offline-banner" class="offline-banner">
+    ⚠️ You are offline — changes may not save.
+  </div>
+
+  <h2>Study Planner (To-Do)</h2>
+
+  <p>
+    <a href="/">← Back to Reflective Journal</a>
+  </p>
+
+  <form name="taskForm" onsubmit="return addTask()">
+    <label>Task title:</label><br>
+    <input type="text" id="taskTitle" required><br><br>
+
+    <label>Due date:</label><br>
+    <input type="date" id="taskDue"><br><br>
+
+    <label>Priority:</label><br>
+    <select id="taskPriority">
+      <option>Low</option>
+      <option selected>Medium</option>
+      <option>High</option>
+    </select><br><br>
+
+    <input type="submit" value="Add Task">
+    <input type="reset" value="Reset"><br><br>
+  </form>
+
+  <h2>My Tasks</h2>
+  <div id="taskList"></div>
+
+  <!-- Register Service Worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js")
+          .then(() => console.log("Service Worker registered"))
+          .catch(err => console.log("SW error:", err));
+      });
+    }
+  </script>
+
+</body>
+</html>

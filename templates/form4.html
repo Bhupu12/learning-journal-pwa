@@ -10,11 +10,10 @@
   <!-- Theme color -->
   <meta name="theme-color" content="#2b6cb0">
 
-  <!-- Icons -->
   <link rel="icon" href="{{ url_for('static', filename='images/icon-192.png') }}">
   <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/icon-192.png') }}">
 
-  <!-- CSS -->
+  <!-- CSS Styling -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
   <!-- Main JS -->
@@ -28,48 +27,34 @@
     ⚠️ You are offline — changes may not save.
   </div>
 
-  <!-- HERO SECTION -->
-  <section class="hero hero-bg">
-    <div class="hero-overlay"></div>
+  <h2>Reflective Journal</h2>
 
-    <div class="hero-content container">
-      <h1 class="hero-title">Reflective Journal</h1>
-      <p class="hero-subtitle">
-        Write your weekly reflection and keep track of your learning journey.
-      </p>
+  <!-- ✅ Mini Project Link -->
+  <p>
+    <a href="/todo">Go to Study Planner (To-Do)</a>
+  </p>
 
-      <a class="btn primary" href="/todo">📝 Open Study Planner (To-Do)</a>
-    </div>
-  </section>
+  <p id="todayDate"></p>
 
-  <!-- MAIN CONTENT -->
-  <main class="container content-wrap">
+  <form name="myForm" onsubmit="return checkReflection()">
+    <label for="fname">Name:</label><br>
+    <input type="text" id="fname" name="fname" required><br><br>
 
-    <p id="todayDate" class="today-date"></p>
+    <label for="reflection">Reflection:</label><br>
+    <textarea id="reflection" name="reflection" minlength="10"
+      placeholder="What did you learn this week? What did you find challenging?"
+      rows="4" required></textarea><br><br>
 
-    <div class="card">
-      <form name="myForm" onsubmit="return checkReflection()">
-        <label for="fname">Name:</label><br>
-        <input type="text" id="fname" name="fname" required><br><br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset"><br><br>
+  </form>
 
-        <label for="reflection">Reflection:</label><br>
-        <textarea id="reflection" name="reflection" minlength="10"
-          placeholder="What did you learn this week? What did you find challenging?"
-          rows="4" required></textarea><br><br>
+  <h2>Search Reflections</h2>
+  <input type="text" id="searchBar" placeholder="Search reflections..."
+         onkeyup="searchReflections()"><br><br>
 
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset"><br><br>
-      </form>
-    </div>
-
-    <h2 class="section-title">Search Reflections</h2>
-    <input type="text" id="searchBar" placeholder="Search reflections..."
-           onkeyup="searchReflections()" class="search-input"><br><br>
-
-    <h2 class="section-title">Previous Reflections</h2>
-    <div id="viewAll" class="card"></div>
-
-  </main>
+  <h2>Previous Reflections</h2>
+  <div id="viewAll"></div>
 
   <!-- Register Service Worker -->
   <script>
