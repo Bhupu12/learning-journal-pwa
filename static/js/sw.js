@@ -46,7 +46,7 @@ self.addEventListener("fetch", (event) => {
 
   // ✅ Cache API responses (GET reflections + tasks) with network-first
   if (
-    (url.pathname.startsWith("/api/reflections") || url.pathname.startsWith("/api/tasks")) &&
+    (url.pathname.startsWith("https://bhupendrathapa.pythonanywhere.com/api/reflections") || url.pathname.startsWith("/api/tasks")) &&
     req.method === "GET"
   ) {
     event.respondWith(networkFirst(req));

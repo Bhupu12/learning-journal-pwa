@@ -37,7 +37,7 @@ async function checkReflection() {
   const entry = { name, reflection };
 
   try {
-    const response = await fetch("/api/reflections", {
+    const response = await fetch("https://bhupendrathapa.pythonanywhere.com/api/reflections", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(entry)
@@ -67,7 +67,7 @@ async function submitted() {
   view.innerHTML = "<i>Loading...</i>";
 
   try {
-    const response = await fetch("/api/reflections");
+    const response = await fetch("https://bhupendrathapa.pythonanywhere.com/api/reflections");
     if (!response.ok) {
       view.innerHTML = "<i>Error loading reflections.</i>";
       return;
@@ -124,7 +124,7 @@ function renderReflections(reflections) {
 ------------------------------ */
 async function deleteReflection(id) {
   try {
-    const response = await fetch(`/api/reflections/${id}`, { method: "DELETE" });
+    const response = await fetch(`https://bhupendrathapa.pythonanywhere.com/api/reflections/${id}`, { method: "DELETE" });
 
     if (response.ok) {
       await submitted();
@@ -172,7 +172,7 @@ async function submitEdit(id) {
   const updatedReflection = document.getElementById("editText").value;
 
   try {
-    const response = await fetch(`/api/reflections/${id}`, {
+    const response = await fetch(`https://bhupendrathapa.pythonanywhere.com/api/reflections/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -199,7 +199,7 @@ async function searchReflections() {
   const query = document.getElementById("searchBar").value.toLowerCase();
 
   try {
-    const response = await fetch("/api/reflections");
+    const response = await fetch("https://bhupendrathapa.pythonanywhere.com/api/reflections");
     if (!response.ok) return;
 
     const reflections = await response.json();

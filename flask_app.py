@@ -70,7 +70,7 @@ def todo_page():
 # ------------------------------
 # GET reflections
 # ------------------------------
-@app.route("/api/reflections", methods=["GET"])
+@app.route("https://bhupendrathapa.pythonanywhere.com/api/reflections", methods=["GET"])
 def get_reflections():
     reflections = load_reflections()
     return jsonify(reflections)
@@ -79,7 +79,7 @@ def get_reflections():
 # ------------------------------
 # POST new reflection
 # ------------------------------
-@app.route("/api/reflections", methods=["POST"])
+@app.route("https://bhupendrathapa.pythonanywhere.com/api/reflections", methods=["POST"])
 def add_reflection():
     data = request.get_json() or {}
     reflections = load_reflections()
@@ -103,7 +103,7 @@ def add_reflection():
 # ------------------------------
 # DELETE reflection
 # ------------------------------
-@app.route("/api/reflections/<int:ref_id>", methods=["DELETE"])
+@app.route("https://bhupendrathapa.pythonanywhere.com/api/reflections/<int:ref_id>", methods=["DELETE"])
 def delete_reflection(ref_id):
     reflections = load_reflections()
     reflections = [r for r in reflections if r.get("id") != ref_id]
@@ -119,7 +119,7 @@ def delete_reflection(ref_id):
 # ------------------------------
 # EDIT (PUT) reflection
 # ------------------------------
-@app.route("/api/reflections/<int:ref_id>", methods=["PUT"])
+@app.route("https://bhupendrathapa.pythonanywhere.com/api/reflections/<int:ref_id>", methods=["PUT"])
 def edit_reflection(ref_id):
     data = request.get_json() or {}
     reflections = load_reflections()

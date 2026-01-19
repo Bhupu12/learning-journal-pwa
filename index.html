@@ -1,83 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Learning Journal</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
+  <meta charset="UTF-8">
+  <title>Learning Journal</title>
 
-  <header>
-    <nav class="navbar">
-      <a href="index.html" class="logo">My Journal</a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="journal.html">Journal</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-      <button id="theme-toggle" class="nav-btn" aria-label="Toggle theme">🌓</button>
+  <link rel="manifest" href="/static/manifest.json">
+  <meta name="theme-color" content="#2b6cb0">
+
+  <link rel="icon" href="/static/images/icon-192.png">
+  <link rel="apple-touch-icon" href="/static/images/icon-192.png">
+
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- Your existing app JS -->
+  <script src="./form4JS.js"></script>
+</head>
+
+<body onload="init(); showPage('home');">
+
+  <!-- Offline banner -->
+  <div id="offline-banner" class="offline-banner">
+    ⚠️ You are offline — changes may not save.
+  </div>
+
+  <!-- TOP NAV -->
+  <header class="topbar">
+    <div class="brand">Journal</div>
+
+    <nav class="navlinks">
+      <a href="#" onclick="showPage('home'); return false;">Home</a>
+      <a href="#" onclick="showPage('journal'); return false;">Journal</a>
+      <a href="#" onclick="showPage('projects'); return false;">Projects</a>
+      <a href="#" onclick="showPage('about'); return false;">About</a>
     </nav>
+
+    <button class="theme-btn" type="button" onclick="document.body.classList.toggle('light')">
+      <span class="dot"></span>
+      Toggle Theme
+    </button>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero hero-bg">
-      <div class="hero-overlay"></div>
+  <!-- =========================
+       HOME PAGE
+  ========================== -->
+  <section class="hero page" id="page-home">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1>Welcome to My Learning Journal</h1>
+        <p>Track your learning journey, reflect on your progress and plan your studies effectively.</p>
+        <a class="btn primary" href="#" onclick="showPage('journal'); return false;">⭐ Let's Get Started</a>
+      </div>
+      <div class="hero-right" aria-hidden="true"></div>
+    </div>
 
-      <div class="hero-content container">
-        <div class="hero-top">
-          <p id="date-display" class="hero-meta"></p>
-          <p id="time-display" class="hero-meta"></p>
-        </div>
+    <section class="cards home-cards">
+      <div class="card" onclick="showPage('journal')" style="cursor:pointer;">
+        <h3>Weekly Journal</h3>
+        <p>Write and save your reflections</p>
+        <span class="btn ghost">Open Journal →</span>
+      </div>
 
-        <h1 class="hero-title">Welcome to My Learning Journal</h1>
-        <p class="hero-subtitle">
-          My name is Bhupendra Thapa, and I am currently studying Mobile Application Development.
-        </p>
-        <p class="hero-subtitle">
-          I created this journal to track my progress, explore new technologies, and build a strong portfolio as I develop my skills.
-        </p>
+      <div class="card" onclick="showPage('projects')" style="cursor:pointer;">
+        <h3>Projects & Works</h3>
+        <p>View and manage your projects</p>
+        <span class="btn ghost">Open Projects →</span>
+      </div>
 
-        <div class="hero-actions">
-          <a class="btn primary" href="journal.html">📓 Open Journal</a>
-          <a class="btn ghost" href="projects.html">💼 View Projects</a>
-        </div>
+      <div class="card" onclick="showPage('about')" style="cursor:pointer;">
+        <h3>About Bhupendra</h3>
+        <p>Learn more about who I am.</p>
+        <span class="btn ghost">Open About →</span>
       </div>
     </section>
+  </section>
 
-    <!-- FEATURE CARDS -->
-    <section class="container section-pad">
-      <div class="card-grid">
-        <a class="feature-card" href="journal.html">
-          <div class="feature-icon">📝</div>
-          <h3>Weekly Journal</h3>
-          <p>Write and save reflections to track your progress.</p>
-          <span class="feature-link">Open →</span>
-        </a>
-
-        <a class="feature-card" href="projects.html">
-          <div class="feature-icon">🚀</div>
-          <h3>Projects</h3>
-          <p>Showcase the projects you worked on during the course.</p>
-          <span class="feature-link">View →</span>
-        </a>
-
-        <a class="feature-card" href="about.html">
-          <div class="feature-icon">👤</div>
-          <h3>About</h3>
-          <p>Learn more about me and my goals for this course.</p>
-          <span class="feature-link">Read →</span>
-        </a>
+  <!-- =========================
+       JOURNAL PAGE
+  ========================== -->
+  <main class="content page" id="page-journal">
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Weekly Journal</h2>
+        <p id="todayDate" class="muted"></p>
       </div>
+
+      <form name="myForm" onsubmit="return checkReflection()">
+        <label for="fname">Name:</label><br>
+        <input type="text" id="fname" name="fname" required><br><br>
+
+        <label for="reflection">Reflection:</label><br>
+        <textarea id="reflection" name="reflection" minlength="10"
+          placeholder="What did you learn this week? What did you find challenging?"
+          rows="4" required></textarea><br><br>
+
+        <div class="form-actions">
+          <input type="submit" value="Submit">
+          <input type="reset" value="Reset">
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="saved-head">
+        <h2>Saved Reflections</h2>
+
+        <div class="search-wrap">
+          <input type="text" id="searchBar" placeholder="Search saved reflections..."
+                 onkeyup="searchReflections()">
+          <span class="search-icon">🔎</span>
+        </div>
+      </div>
+
+      <div id="viewAll"></div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Bhupendra Thapa</p>
-  </footer>
+  <!-- =========================
+       PROJECTS PAGE
+  ========================== -->
+  <section class="content page" id="page-projects">
+    <section class="panel">
+      <h2>Projects & Works</h2>
+      <p class="muted">Mini Project Extension integrated into the same PWA.</p>
 
-  <script src="js/script.js"></script>
+      <div class="cards inside-panel">
+        <div class="card">
+          <h3>Study Planner (To-Do)</h3>
+          <p>Plan tasks, manage study goals and track progress.</p>
+          <a class="btn ghost" href="/todo">Open Study Planner →</a>
+        </div>
+
+        <div class="card">
+          <h3>Reflection Tools</h3>
+          <p>Search, edit, and delete reflections.</p>
+          <a class="btn ghost" href="#" onclick="showPage('journal'); return false;">Go to Journal →</a>
+        </div>
+
+        <div class="card">
+          <h3>PWA Offline Mode</h3>
+          <p>Works offline using Service Worker caching.</p>
+          <a class="btn ghost" href="#" onclick="showPage('home'); return false;">Back to Home →</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- =========================
+       ABOUT PAGE
+  ========================== -->
+  <section class="content page" id="page-about">
+  <section class="panel">
+    <h2>About Bhupendra</h2>
+
+    <p class="muted">
+      I am a BSc (Hons) Computer Science student with a strong interest in web and application
+      development. This Learning Journal was created as part of my Mobile Application Development
+      module to record my learning progress and demonstrate practical technical skills.
+    </p>
+
+    <p class="muted">
+      The application is developed as a Progressive Web App (PWA) using HTML and CSS for structure
+      and visual design, Vanilla JavaScript for interactivity, and a Flask backend for managing
+      data storage and server communication. Reflections are stored using server-side JSON,
+      allowing full CRUD functionality including creating, editing, deleting, and searching entries.
+    </p>
+
+    <p class="muted">
+      A key focus of this project was usability and reliability. Offline functionality is supported
+      through a Service Worker, ensuring the application remains accessible even without an internet
+      connection. The user interface was carefully designed to be clear, responsive, and easy to
+      navigate across different devices.
+    </p>
+
+    <p class="muted">
+      In addition to the core Learning Journal, I extended the application with a mini-project
+      feature to enhance functionality and user engagement. This extension allowed me to practise
+      problem-solving skills and gain a deeper understanding of frontend–backend integration in
+      a real-world development environment.
+    </p>
+
+    <p class="muted">
+      Overall, this project reflects my technical development and growing confidence in building
+      complete web applications. With more time, I would further improve the project by adding
+      features such as data visualisation, user authentication, and performance optimisation.
+    </p>
+
+    <a class="btn ghost" href="#" onclick="showPage('home'); return false;">← Back to Home</a>
+  </section>
+</section>
+
+
+  <!-- =========================
+       SHOW/HIDE PAGES (NEW)
+  ========================== -->
+  <script>
+    function showPage(name) {
+      const pages = document.querySelectorAll(".page");
+      pages.forEach(p => p.style.display = "none");
+
+      const el = document.getElementById("page-" + name);
+      if (el) el.style.display = "block";
+
+      // Optional: scroll to top for nice UX
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Keep your service worker registration (your sw.js is in /static/)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/static/sw.js")
+          .then(() => console.log("Service Worker registered"))
+          .catch(err => console.log("SW error:", err));
+      });
+    }
+  </script>
+
 </body>
 </html>

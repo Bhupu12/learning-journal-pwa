@@ -10,7 +10,7 @@ async function checkReflection() {
 
     let entry = { name, reflection };
 
-    let response = await fetch("/api/reflections", {
+    let response = await fetch("https://bhupendrathapa.pythonanywhere.com/api/reflections", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(entry)
@@ -24,7 +24,7 @@ async function checkReflection() {
 }
 
 async function submitted() {
-    let response = await fetch("/api/reflections");
+    let response = await fetch("https://bhupendrathapa.pythonanywhere.com/api/reflections");
     let output = "";
 
     if (response.ok) {
@@ -55,7 +55,7 @@ async function submitted() {
 }
 
 async function deleteReflection(id) {
-    let response = await fetch(`/api/reflections/${id}`, {
+    let response = await fetch(`https://bhupendrathapa.pythonanywhere.com/api/reflections/${id}`, {
         method: "DELETE"
     });
 
@@ -88,7 +88,7 @@ async function submitEdit(id) {
     let updatedName = document.getElementById("editName").value;
     let updatedReflection = document.getElementById("editText").value;
 
-    let response = await fetch(`/api/reflections/${id}`, {
+    let response = await fetch(`https://bhupendrathapa.pythonanywhere.com/api/reflections/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -107,7 +107,7 @@ async function submitEdit(id) {
 async function searchReflections() {
     let query = document.getElementById("searchBar").value.toLowerCase();
 
-    let response = await fetch("/api/reflections");
+    let response = await fetch("https://bhupendrathapa.pythonanywhere.com/api/reflections");
     if (!response.ok) return;
 
     let reflections = await response.json();
