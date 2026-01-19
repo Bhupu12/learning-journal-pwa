@@ -8,9 +8,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(BASE_DIR, "reflections.json")
 
 
-# ------------------------------
-# Load JSON reflections
-# ------------------------------
 def load_reflections():
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, "r", encoding="utf-8") as f:
@@ -21,34 +18,19 @@ def load_reflections():
     return []
 
 
-# ------------------------------
-# Save reflections to JSON
-# ------------------------------
 def save_reflections(reflections):
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(reflections, f, indent=4, ensure_ascii=False)
 
-
-# ------------------------------
-# Home Page (loads HTML)
-# ------------------------------
 @app.route("/")
 def index():
     return render_template("form4.html")
 
-
-# ------------------------------
-# GET reflections
-# ------------------------------
 @app.route("/api/reflections", methods=["GET"])
 def get_reflections():
     reflections = load_reflections()
     return jsonify(reflections)
 
-
-# ------------------------------
-# POST new reflection
-# ------------------------------
 @app.route("/api/reflections", methods=["POST"])
 def add_reflection():
     data = request.get_json() or {}
@@ -70,10 +52,6 @@ def add_reflection():
 
     return jsonify(new_reflection), 201
 
-
-# ------------------------------
-# DELETE reflection
-# ------------------------------
 @app.route("/api/reflections/<int:ref_id>", methods=["DELETE"])
 def delete_reflection(ref_id):
     reflections = load_reflections()
@@ -88,9 +66,6 @@ def delete_reflection(ref_id):
     return jsonify({"message": "Deleted successfully"}), 200
 
 
-# ------------------------------
-# EDIT (PUT) reflection
-# ------------------------------
 @app.route("/api/reflections/<int:ref_id>", methods=["PUT"])
 def edit_reflection(ref_id):
     data = request.get_json() or {}
@@ -106,9 +81,6 @@ def edit_reflection(ref_id):
     return jsonify({"message": "Updated successfully"}), 200
 
 
-# ------------------------------
-# Service Worker at root scope (Lab 7 PWA)
-# ------------------------------
 @app.route("/sw.js")
 def service_worker():
     # your SW file lives in /static/js/sw.js

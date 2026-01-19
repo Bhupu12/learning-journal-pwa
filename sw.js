@@ -6,7 +6,7 @@ const urlsToCache = [
     "/static/form4JS.js",
     "/static/manifest.json",
     "/static/images/icon.png",
-    "/static/offline.html"              // ⭐ NEW FALLBACK PAGE
+    "/static/offline.html"              
 ];
 
 // Install
