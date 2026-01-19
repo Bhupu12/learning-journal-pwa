@@ -35,13 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateDateTime, 1000);
 
   document.querySelectorAll(".toggle-btn").forEach(button => {
-    button.addEventListener("click", () => {
-      const details = button.nextElementSibling;
-      if (details) {
-        details.style.display = details.style.display === "none" ? "block" : "none";
-      }
-    });
+  button.addEventListener("click", () => {
+    const details = button.nextElementSibling;
+    if (!details) return;
+
+    const isHidden = window.getComputedStyle(details).display === "none";
+    details.style.display = isHidden ? "block" : "none";
+
+    button.textContent = isHidden ? "Hide Details" : "View Details";
   });
+});
 
   const journalForm = document.getElementById("journal-form");
   if (journalForm) {
