@@ -1,17 +1,16 @@
 const CACHE_NAME = "journal-cache-v2"; // ✅ bump version so changes apply
 
 const APP_SHELL = [
-  "/",                           // main page
-  "/todo",                       // ✅ NEW page
+  "/",                         
+  "/todo",                     
   "/static/style.css",
   "/static/js/form4JS.js",
-  "/static/js/todo.js",          // ✅ NEW script
+  "/static/js/todo.js",          
   "/static/manifest.json",
   "/static/images/icon-192.png",
   "/static/images/icon-512.png"
 ];
 
-// Install: pre-cache app shell (safe install even if one file missing)
 self.addEventListener("install", (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
@@ -21,7 +20,7 @@ self.addEventListener("install", (event) => {
         try {
           await cache.add(url);
         } catch (e) {
-          // ignore missing files so SW still installs
+         
         }
       })
     );
@@ -30,7 +29,6 @@ self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
-// Activate: clean old caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -44,7 +42,6 @@ self.addEventListener("fetch", (event) => {
   const req = event.request;
   const url = new URL(req.url);
 
-  // ✅ Cache API responses (GET reflections + tasks) with network-first
   if (
     (url.pathname.startsWith("https://bhupendrathapa.pythonanywhere.com/api/reflections") || url.pathname.startsWith("/api/tasks")) &&
     req.method === "GET"
@@ -53,13 +50,11 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Pages: network-first
   if (req.mode === "navigate") {
     event.respondWith(networkFirst(req));
     return;
   }
 
-  // Static assets: cache-first
   event.respondWith(cacheFirst(req));
 });
 

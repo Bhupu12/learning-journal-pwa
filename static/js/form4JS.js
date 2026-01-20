@@ -3,9 +3,7 @@ function getDate() {
   document.getElementById("todayDate").innerHTML = d.toDateString();
 }
 
-/* ------------------------------
-   Offline banner (extra PWA feature)
------------------------------- */
+
 function updateOfflineBanner() {
   const banner = document.getElementById("offline-banner");
   if (!banner) return;
@@ -15,9 +13,7 @@ function updateOfflineBanner() {
 window.addEventListener("online", updateOfflineBanner);
 window.addEventListener("offline", updateOfflineBanner);
 
-/* ------------------------------
-   Escape user content so it doesn't break HTML
------------------------------- */
+
 function escapeHtml(str) {
   return String(str)
     .replaceAll("&", "&amp;")
@@ -27,9 +23,7 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
-/* ------------------------------
-   POST new reflection
------------------------------- */
+
 async function checkReflection() {
   const name = document.getElementById("fname").value;
   const reflection = document.getElementById("reflection").value;
@@ -57,9 +51,7 @@ async function checkReflection() {
   return false; // prevent page reload
 }
 
-/* ------------------------------
-   GET reflections and render
------------------------------- */
+
 async function submitted() {
   const view = document.getElementById("viewAll");
   if (!view) return;
@@ -88,9 +80,7 @@ async function submitted() {
   }
 }
 
-/* ------------------------------
-   Render helper (also used by search)
------------------------------- */
+
 function renderReflections(reflections) {
   let output = "";
 
@@ -99,7 +89,7 @@ function renderReflections(reflections) {
     const safeDate = escapeHtml(r.date ?? "");
     const safeReflection = escapeHtml(r.reflection ?? "");
 
-    // Store values safely for editing (avoid broken quotes)
+   
     output += `
       <div class="reflection-box"
            data-id="${r.id}"
@@ -119,9 +109,7 @@ function renderReflections(reflections) {
   return output;
 }
 
-/* ------------------------------
-   DELETE reflection
------------------------------- */
+
 async function deleteReflection(id) {
   try {
     const response = await fetch(`https://bhupendrathapa.pythonanywhere.com/api/reflections/${id}`, { method: "DELETE" });
@@ -137,9 +125,7 @@ async function deleteReflection(id) {
   }
 }
 
-/* ------------------------------
-   Show edit form
------------------------------- */
+
 function showEditForm(id) {
   const box = document.querySelector(`.reflection-box[data-id="${id}"]`);
   if (!box) return;
@@ -164,9 +150,7 @@ function showEditForm(id) {
   `;
 }
 
-/* ------------------------------
-   PUT update reflection
------------------------------- */
+
 async function submitEdit(id) {
   const updatedName = document.getElementById("editName").value;
   const updatedReflection = document.getElementById("editText").value;
@@ -192,9 +176,7 @@ async function submitEdit(id) {
   }
 }
 
-/* ------------------------------
-   SEARCH reflections
------------------------------- */
+
 async function searchReflections() {
   const query = document.getElementById("searchBar").value.toLowerCase();
 
@@ -222,9 +204,7 @@ async function searchReflections() {
   }
 }
 
-/* ------------------------------
-   Init
------------------------------- */
+
 function init() {
   updateOfflineBanner();
   getDate();

@@ -139,7 +139,7 @@ async function searchReflections() {
     document.getElementById("viewAll").innerHTML = output;
 }
 
-// OFFLINE POPUP
+
 window.addEventListener("offline", () => {
     document.getElementById("offline-banner").style.display = "block";
 });

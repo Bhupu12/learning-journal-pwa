@@ -6,7 +6,6 @@ body {
     color: #333;
 }
 
-/* Give space so fixed offline banner doesn't cover content */
 body {
     padding-top: 60px;
 }
@@ -26,7 +25,6 @@ form, #viewAll {
     max-width: 600px;
 }
 
-/* Reflection card style (used by form4JS.js) */
 .reflection-box {
     background: #f8fafc;
     border: 1px solid #e2e8f0;

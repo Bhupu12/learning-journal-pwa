@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <title>Study Planner - To Do</title>
 
-  <!-- PWA -->
   <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
   <meta name="theme-color" content="#2b6cb0">
 
-  <!-- CSS + JS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <script src="{{ url_for('static', filename='js/todo.js') }}"></script>
 </head>
@@ -46,8 +44,7 @@
   <h2>My Tasks</h2>
   <div id="taskList"></div>
 
-  <!-- Register Service Worker -->
-  <script>
+]  <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker.register("/sw.js")

@@ -4,32 +4,26 @@
   <meta charset="UTF-8">
   <title>Reflective Journal</title>
 
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+   <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
 
-  <!-- Theme color -->
   <meta name="theme-color" content="#2b6cb0">
 
   <link rel="icon" href="{{ url_for('static', filename='images/icon-192.png') }}">
   <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/icon-192.png') }}">
 
-  <!-- CSS Styling -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-  <!-- Main JS -->
   <script src="{{ url_for('static', filename='js/form4JS.js') }}"></script>
 </head>
 
 <body onload="init()">
 
-  <!-- Offline banner -->
   <div id="offline-banner" class="offline-banner">
     ⚠️ You are offline — changes may not save.
   </div>
 
   <h2>Reflective Journal</h2>
 
-  <!-- ✅ Mini Project Link -->
   <p>
     <a href="/todo">Go to Study Planner (To-Do)</a>
   </p>
@@ -56,7 +50,6 @@
   <h2>Previous Reflections</h2>
   <div id="viewAll"></div>
 
-  <!-- Register Service Worker -->
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {

@@ -7,7 +7,6 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
-/* Offline banner - show immediately + update on changes */
 function updateOfflineBanner() {
   const banner = document.getElementById("offline-banner");
   if (!banner) return;

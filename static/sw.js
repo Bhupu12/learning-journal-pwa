@@ -6,10 +6,9 @@ const urlsToCache = [
     "/static/form4JS.js",
     "/static/manifest.json",
     "/static/images/icon.png",
-    "/static/offline.html"              // ⭐ NEW FALLBACK PAGE
+    "/static/offline.html"              
 ];
 
-// Install
 self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
@@ -19,7 +18,6 @@ self.addEventListener("install", (event) => {
     self.skipWaiting();
 });
 
-// Activate
 self.addEventListener("activate", (event) => {
     event.waitUntil(
         caches.keys().then((keys) => {
@@ -35,10 +33,8 @@ self.addEventListener("activate", (event) => {
     self.clients.claim();
 });
 
-// Fetch
 self.addEventListener("fetch", (event) => {
 
-    // Ignore POST/PUT/DELETE
     if (event.request.method !== "GET") return;
 
     event.respondWith(

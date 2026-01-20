@@ -13,13 +13,11 @@ function escapeHTML(str = "") {
     .replaceAll("'", "&#39;");
 }
 
-/* Preserve exactly what user typed (line breaks + paragraphs) */
 function formatReflectionHTML(text = "") {
   const safe = escapeHTML(text).replaceAll("\r\n", "\n");
   return `<p>${safe.replaceAll("\n", "<br>")}</p>`;
 }
 
-/* Safe encoding for passing reflection into onclick */
 function encodeForAttr(str = "") {
   return encodeURIComponent(str);
 }
